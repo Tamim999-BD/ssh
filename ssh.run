@@ -1,0 +1,128 @@
+#!/bin/bash
+
+# ===========================================
+# Secure SSH Setup + Custom MOTD - SKNODES
+# Professional Server Configuration
+# ===========================================
+
+clear
+
+echo -e "\033[1;36m🔐 SKNODES - Secure SSH Configuration\033[0m"
+echo -e "\033[1;37m=====================================\033[0m"
+
+sleep 1
+
+echo -e "\033[1;34m▶ Updating SSH configuration...\033[0m"
+
+# Update SSH config with optimized settings
+sudo bash -c 'cat <<EOF > /etc/ssh/sshd_config
+# SSH SERVER CONFIGURATION - SKNODES
+Port 22
+Protocol 2
+
+# AUTHENTICATION SETTINGS
+PasswordAuthentication yes
+PermitRootLogin yes
+PubkeyAuthentication no
+ChallengeResponseAuthentication no
+UsePAM yes
+PermitEmptyPasswords no
+
+# SECURITY ENHANCEMENTS
+X11Forwarding no
+AllowTcpForwarding yes
+MaxAuthTries 3
+MaxSessions 10
+ClientAliveInterval 300
+ClientAliveCountMax 2
+
+# LOGGING
+SyslogFacility AUTH
+LogLevel INFO
+
+# SFTP SETTINGS
+Subsystem sftp /usr/lib/openssh/sftp-server
+EOF'
+
+if [ $? -eq 0 ]; then
+    echo -e "\033[1;32m✓ SSH configuration applied successfully\033[0m"
+else
+    echo -e "\033[1;31m✗ Failed to update SSH configuration\033[0m"
+    exit 1
+fi
+
+echo -e "\033[1;34m▶ Restarting SSH service...\033[0m"
+sudo systemctl restart ssh 2>/dev/null || sudo service ssh restart 2>/dev/null
+
+if [ $? -eq 0 ]; then
+    echo -e "\033[1;32m✓ SSH service restarted successfully\033[0m"
+else
+    echo -e "\033[1;33m⚠ SSH service restart completed with warnings\033[0m"
+fi
+
+sleep 1
+
+# Custom MOTD Installation
+echo -e "\033[1;34m▶ Installing Professional MOTD...\033[0m"
+
+# Check if curl is available
+if ! command -v curl &> /dev/null; then
+    echo -e "\033[1;33m⚠ curl not found, installing...\033[0m"
+    sudo apt-get update && sudo apt-get install -y curl 2>/dev/null || \
+    sudo yum install -y curl 2>/dev/null || \
+    sudo dnf install -y curl 2>/dev/null
+fi
+
+# Install MOTD
+if curl -fsSL https://raw.githubusercontent.com/hopingboyz/vps-motd/main/motd.sh 2>/dev/null | bash; then
+    echo -e "\033[1;32m✓ Custom MOTD installed successfully\033[0m"
+else
+    echo -e "\033[1;33m⚠ MOTD installation completed with warnings\033[0m"
+fi
+
+sleep 1
+
+clear
+
+cat << "EOF"
+
+  ╔═══════════════════════════════════════════╗
+  ║         ░▒▓█ SKNODES SERVER █▓▒░         ║
+  ╠═══════════════════════════════════════════╣
+  ║    Professional Server Infrastructure     ║
+  ║         Secure • Stable • Scalable        ║
+  ╚═══════════════════════════════════════════╝
+
+
+░██████╗██╗░░██╗███╗░░██╗░█████╗░██████╗░███████╗░██████╗
+██╔════╝██║░██╔╝████╗░██║██╔══██╗██╔══██╗██╔════╝██╔════╝
+╚█████╗░█████═╝░██╔██╗██║██║░░██║██║░░██║█████╗░░╚█████╗░
+░╚═══██╗██╔═██╗░██║╚████║██║░░██║██║░░██║██╔══╝░░░╚═══██╗
+██████╔╝██║░╚██╗██║░╚███║╚█████╔╝██████╔╝███████╗██████╔╝
+╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝░╚════╝░╚═════╝░╚══════╝╚═════╝░   
+                                              
+EOF
+
+echo -e "\033[1;32m✓ Server configuration completed successfully\033[0m"
+echo -e "\033[1;37m📋 SKNODES VPS setup is now complete\033[0m"
+
+echo -e "\n\033[1;33m⚠ SECURITY ADVISORY:\033[0m"
+echo -e "\033[1;37m• Change the default SSH port for enhanced security\033[0m"
+echo -e "\033[1;37m• Consider using SSH keys for authentication\033[0m"
+echo -e "\033[1;37m• Regularly update your server packages\033[0m"
+
+echo -e "\n\033[1;36m▶ Please set your ROOT password:\033[0m"
+sudo passwd root
+
+echo -e "\n\033[1;35m══════════════════════════════════════════════\033[0m"
+echo -e "\033[1;36m✨ SKNODES Professional Server Ready! ✨\033[0m"
+echo -e "\033[1;37m🔗 Connect: ssh root@$(curl -s ifconfig.me 2>/dev/null || hostname -I | awk '{print $1}')\033[0m"
+echo -e "\033[1;37m📊 Monitor: htop, nmon, netstat, vnstat\033[0m"
+echo -e "\033[1;35m══════════════════════════════════════════════\033[0m"
+
+# Display server info
+echo -e "\n\033[1;34m📊 SERVER INFORMATION:\033[0m"
+echo -e "\033[1;37mHostname: \033[1;36m$(hostname)\033[0m"
+echo -e "\033[1;37mIP Address: \033[1;36m$(hostname -I | awk '{print $1}')\033[0m"
+echo -e "\033[1;37mUptime: \033[1;36m$(uptime -p | sed 's/up //')\033[0m"
+echo -e "\033[1;37mOS: \033[1;36m$(grep PRETTY_NAME /etc/os-release | cut -d'"' -f2)\033[0m"
