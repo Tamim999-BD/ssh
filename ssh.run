@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # ===========================================
-# Secure SSH Setup + Custom MOTD - SKNODES
+# Secure SSH Setup + Custom MOTD - MinePanel
 # Professional Server Configuration
 # ===========================================
 
 clear
 
-echo -e "\033[1;36m🔐 SKNODES - Secure SSH Configuration\033[0m"
+echo -e "\033[1;36m🔐 MinePanel - Secure SSH Configuration\033[0m"
 echo -e "\033[1;37m=====================================\033[0m"
 
 sleep 1
@@ -87,24 +87,24 @@ clear
 cat << "EOF"
 
   ╔═══════════════════════════════════════════╗
-  ║         ░▒▓█ SKNODES SERVER █▓▒░         ║
+  ║         ░▒▓█ MinePanel SERVER █▓▒░         ║
   ╠═══════════════════════════════════════════╣
   ║    Professional Server Infrastructure     ║
   ║         Secure • Stable • Scalable        ║
   ╚═══════════════════════════════════════════╝
 
 
-░██████╗██╗░░██╗███╗░░██╗░█████╗░██████╗░███████╗░██████╗
-██╔════╝██║░██╔╝████╗░██║██╔══██╗██╔══██╗██╔════╝██╔════╝
-╚█████╗░█████═╝░██╔██╗██║██║░░██║██║░░██║█████╗░░╚█████╗░
-░╚═══██╗██╔═██╗░██║╚████║██║░░██║██║░░██║██╔══╝░░░╚═══██╗
-██████╔╝██║░╚██╗██║░╚███║╚█████╔╝██████╔╝███████╗██████╔╝
-╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝░╚════╝░╚═════╝░╚══════╝╚═════╝░   
+███╗░░░███╗██╗███╗░░██╗███████╗██████╗░░█████╗░███╗░░██╗███████╗██╗░░░░░
+████╗░████║██║████╗░██║██╔════╝██╔══██╗██╔══██╗████╗░██║██╔════╝██║░░░░░
+██╔████╔██║██║██╔██╗██║█████╗░░██████╔╝███████║██╔██╗██║█████╗░░██║░░░░░
+██║╚██╔╝██║██║██║╚████║██╔══╝░░██╔═══╝░██╔══██║██║╚████║██╔══╝░░██║░░░░░
+██║░╚═╝░██║██║██║░╚███║███████╗██║░░░░░██║░░██║██║░╚███║███████╗███████╗
+╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚══════╝╚═╝░░░░░╚═╝░░╚═╝╚═╝░░╚══╝╚══════╝╚══════╝   
                                               
 EOF
 
 echo -e "\033[1;32m✓ Server configuration completed successfully\033[0m"
-echo -e "\033[1;37m📋 SKNODES VPS setup is now complete\033[0m"
+echo -e "\033[1;37m📋 MinePanel VPS setup is now complete\033[0m"
 
 echo -e "\n\033[1;33m⚠ SECURITY ADVISORY:\033[0m"
 echo -e "\033[1;37m• Change the default SSH port for enhanced security\033[0m"
@@ -115,7 +115,7 @@ echo -e "\n\033[1;36m▶ Please set your ROOT password:\033[0m"
 sudo passwd root
 
 echo -e "\n\033[1;35m══════════════════════════════════════════════\033[0m"
-echo -e "\033[1;36m✨ SKNODES Professional Server Ready! ✨\033[0m"
+echo -e "\033[1;36m✨ MinePanel Professional Server Ready! ✨\033[0m"
 echo -e "\033[1;37m🔗 Connect: ssh root@$(curl -s ifconfig.me 2>/dev/null || hostname -I | awk '{print $1}')\033[0m"
 echo -e "\033[1;37m📊 Monitor: htop, nmon, netstat, vnstat\033[0m"
 echo -e "\033[1;35m══════════════════════════════════════════════\033[0m"
