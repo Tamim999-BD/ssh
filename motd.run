@@ -1,13 +1,28 @@
-#!/bin/bash
-# SKNODES Advanced MOTD Installer - Professional Server Dashboard
 
-echo "🔧 Installing SKNODES Professional MOTD..."
+███╗░░░███╗██╗███╗░░██╗███████╗██████╗░░█████╗░███╗░░██╗███████╗██╗░░░░░
+████╗░████║██║████╗░██║██╔════╝██╔══██╗██╔══██╗████╗░██║██╔════╝██║░░░░░
+██╔████╔██║██║██╔██╗██║█████╗░░██████╔╝███████║██╔██╗██║█████╗░░██║░░░░░
+██║╚██╔╝██║██║██║╚████║██╔══╝░░██╔═══╝░██╔══██║██║╚████║██╔══╝░░██║░░░░░
+██║░╚═╝░██║██║██║░╚███║███████╗██║░░░░░██║░░██║██║░╚███║███████╗███████╗
+╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚══════╝╚═╝░░░░░╚═╝░░╚═╝╚═╝░░╚══╝╚══════╝╚══════╝
+
+
+
+
+
+
+
+
+#!/bin/bash
+# MinePanel Advanced MOTD Installer - Professional Server Dashboard
+
+echo "🔧 Installing MinePanel Professional MOTD..."
 
 # Disable default MOTD messages
 chmod -x /etc/update-motd.d/* 2>/dev/null
 
 # Create professional stats MOTD script
-cat << 'EOF' > /etc/update-motd.d/00-sknodes
+cat << 'EOF' > /etc/update-motd.d/00-minepanel
 #!/bin/bash
 
 # Color Definitions
@@ -63,20 +78,20 @@ progress_bar() {
 # Get stats
 get_stats
 
-# Header with SKNODES ASCII Art
+# Header with MinePanel ASCII Art
 echo -e "${CYAN}"
 echo -e "┌──────────────────────────────────────────────────────────────────────┐"
 echo -e "│                                                                      │"
-echo -e "│  ░██████╗██╗░░██╗███╗░░██╗░█████╗░██████╗░███████╗░██████╗           │"
-echo -e "│  ██╔════╝██║░██╔╝████╗░██║██╔══██╗██╔══██╗██╔════╝██╔════╝           │"
-echo -e "│  ╚█████╗░█████═╝░██╔██╗██║██║░░██║██║░░██║█████╗░░╚█████╗░           │"
-echo -e "│  ░╚═══██╗██╔═██╗░██║╚████║██║░░██║██║░░██║██╔══╝░░░╚═══██╗           │"
-echo -e "│  ██████╔╝██║░╚██╗██║░╚███║╚█████╔╝██████╔╝███████╗██████╔╝           │"
-echo -e "│  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝░╚════╝░╚═════╝░╚══════╝╚═════╝░           │"
+echo -e "│  ███╗░░░███╗██╗███╗░░██╗███████╗██████╗░░█████╗░███╗░░██╗███████╗██╗░░░░░  │"
+echo -e "│  ████╗░████║██║████╗░██║██╔════╝██╔══██╗██╔══██╗████╗░██║██╔════╝██║░░░░░  │"
+echo -e "│  ██╔████╔██║██║██╔██╗██║█████╗░░██████╔╝███████║██╔██╗██║█████╗░░██║░░░░░  │"
+echo -e "│  ██║╚██╔╝██║██║██║╚████║██╔══╝░░██╔═══╝░██╔══██║██║╚████║██╔══╝░░██║░░░░░  │"
+echo -e "│  ██║░╚═╝░██║██║██║░╚███║███████╗██║░░░░░██║░░██║██║░╚███║███████╗███████╗  │"
+echo -e "│  ╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚══════╝╚═╝░░░░░╚═╝░░╚═╝╚═╝░░╚══╝╚══════╝╚══════╝  │"
 echo -e "│                                                                      │"
 echo -e "└──────────────────────────────────────────────────────────────────────┘${RESET}"
 
-echo -e "${GREEN}${BOLD}   ⚡ SKNODES Professional Server Dashboard${RESET}"
+echo -e "${GREEN}${BOLD}   ⚡ MinePanel Professional Server Dashboard${RESET}"
 echo -e "${WHITE}   ──────────────────────────────────────────────${RESET}\n"
 
 # System Information
@@ -132,9 +147,9 @@ fi
 
 # Footer
 echo -e "\n${CYAN}${BOLD}┌──────────────────────────────────────────────────────────────────────┐${RESET}"
-echo -e "${WHITE}   🌐 Website:     ${BLUE}https://sknodes.com${RESET}"
-echo -e "${WHITE}   📧 Support:     ${BLUE}support@sknodes.com${RESET}"
-echo -e "${WHITE}   💼 Enterprise:  ${BLUE}enterprise@sknodes.com${RESET}"
+echo -e "${WHITE}   🌐 Website:     ${BLUE}https://minepanel.com${RESET}"
+echo -e "${WHITE}   📧 Support:     ${BLUE}support@minepanel.com${RESET}"
+echo -e "${WHITE}   💼 Enterprise:  ${BLUE}enterprise@minepanel.com${RESET}"
 echo -e "${CYAN}${BOLD}└──────────────────────────────────────────────────────────────────────┘${RESET}"
 
 echo -e "\n${GREEN}${BOLD}   ⚡ Professional Infrastructure • Secure • Scalable • Reliable${RESET}"
@@ -142,14 +157,14 @@ echo -e "${YELLOW}   Last updated: $(date '+%Y-%m-%d %H:%M')${RESET}"
 EOF
 
 # Make script executable
-chmod +x /etc/update-motd.d/00-sknodes
+chmod +x /etc/update-motd.d/00-minepanel
 
 # Test the MOTD
-echo -e "${GREEN}${BOLD}✅ SKNODES MOTD Installed Successfully!${RESET}"
+echo -e "${GREEN}${BOLD}✅ MinePanel MOTD Installed Successfully!${RESET}"
 echo -e "${YELLOW}➡ Please reconnect SSH to see the new professional dashboard${RESET}"
 echo -e "${CYAN}   You can also run: ${WHITE}run-parts /etc/update-motd.d/${RESET}\n"
 
 # Display preview
 echo -e "${BLUE}${BOLD}📋 Preview of your new MOTD:${RESET}"
 echo -e "${WHITE}──────────────────────────────────────────────────────${RESET}"
-/etc/update-motd.d/00-sknodes
+/etc/update-motd.d/00-minepanel
